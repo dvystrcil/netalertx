@@ -109,11 +109,11 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 999
-        seccompProfile:
-          type: RuntimeDefault
+      # securityContext:
+      #   runAsNonRoot: true
+      #   runAsUser: 999
+      #   seccompProfile:
+      #     type: RuntimeDefault
       serviceAccount: netalertx
       serviceAccountName: netalertx
       volumes:
