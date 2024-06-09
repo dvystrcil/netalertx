@@ -39,6 +39,8 @@ metadata:
     app.kubernetes.io/instance: netalertx
     app.kubernetes.io/name: netalertx
     app.kubernetes.io/part-of: netalertx
+  annotations:
+    reloader.stakater.com/auto: "true"
   name: netalertx
   namespace: netalertx
 spec:
