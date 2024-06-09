@@ -103,7 +103,7 @@ spec:
             capabilities:
               drop:
                 - ALL
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
