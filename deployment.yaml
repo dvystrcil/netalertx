@@ -88,14 +88,11 @@ spec:
           resources: {}
           volumeMounts:
             - name: netalertx-claim
-              mountPath: /app
-              subPath: config
+              mountPath: /app/config
             - name: netalertx-claim
-              mountPath: /app
-              subPath: db
+              mountPath: /app/db
             - name: netalertx-claim
-              mountPath: /app
-              subPath: front/log
+              mountPath: /app/front/log
             - name: tmp
               mountPath: /tmp
           envFrom:
