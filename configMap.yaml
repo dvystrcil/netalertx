@@ -13,4 +13,4 @@ metadata:
 data:
   TZ: 'America/Los_Angeles'
   PORT: "20211" 
-  SCAN_SUBNETS: "['192.168.86.0/24 --interface=eth0']"
+
