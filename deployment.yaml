@@ -1,0 +1,128 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: netalertx
+    app.kubernetes.io/name: netalertx
+    app.kubernetes.io/part-of: netalertx
+  annotations:
+    reloader.stakater.com/auto: "true"
+  name: netalertx
+  namespace: netalertx
+spec:
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: netalertx
+  type: ClusterIP
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: netalertx
+    app.kubernetes.io/name: netalertx
+    app.kubernetes.io/part-of: netalertx
+  name: netalertx
+  namespace: netalertx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: netalertx
+    app.kubernetes.io/name: netalertx
+    app.kubernetes.io/part-of: netalertx
+  name: netalertx
+  namespace: netalertx
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: netalertx
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: netalertx
+    spec:
+      tolerations:
+      - key: kubernetes.io/arch
+        operator: Equal
+        value: arm64
+        effect: NoSchedule
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: netalertx
+                topologyKey: kubernetes.io/hostname
+              weight: 100
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/part-of: netalertx
+                topologyKey: kubernetes.io/hostname
+              weight: 5
+      containers:
+        - image: 'jokobsk/netalertx:latest'
+          imagePullPolicy: IfNotPresent
+          name: netalertx
+          ports:
+            - name: http
+              containerPort: 20211 
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - name: netalertx-claim
+              mountPath: /app
+              subPath: config
+            - name: netalertx-claim
+              mountPath: /app
+              subPath: db
+            - name: netalertx-claim
+              mountPath: /app
+              subPath: front/log
+            - name: tmp
+              mountPath: /tmp
+          envFrom:
+            - configMapRef:
+                name: netalertx-configmap
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccount: netalertx
+      serviceAccountName: netalertx
+      volumes:
+        - name: netalertx-claim
+          persistentVolumeClaim:
+            claimName: netalertx-claim
+        - name: tmp
+          emptyDir: {} 
+

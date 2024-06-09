@@ -1,0 +1,17 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: netalertx-claim
+  namespace: netalertx
+  labels:
+    app.kubernetes.io/part-of: netalertx
+    app.kubernetes.io/instance: netalertx
+    app.kubernetes.io/name: netalertx-claim
+    app.kubernetes.io/component: pvc
+spec:
+  accessModes:
+    - ReadWriteMany  
+  resources:
+    requests:
+      storage: 5Gi  

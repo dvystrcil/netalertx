@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: netalertx
+    app.kubernetes.io/part-of: netalertx
+    app.kubernetes.io/name: netalertx-configmap    
+    app.kubernetes.io/component: configmap
+  annotations:
+    reloader.stakater.com/auto: "true"
+  name: netalertx-configmap   
+  namespace: netalertx
+data:
+  TZ: 'America/Los_Angeles'
+  PORT: "20211" 
