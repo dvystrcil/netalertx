@@ -101,9 +101,9 @@ spec:
             - configMapRef:
                 name: netalertx-configmap
           securityContext:
-            runAsUser: 101
-            runAsGroup: 82
-            fsGroup: 82
+            # runAsUser: 101
+            # runAsGroup: 82
+            # fsGroup: 82
             allowPrivilegeEscalation: false
           #   capabilities:
           #     drop:
