@@ -13,4 +13,5 @@ metadata:
 data:
   TZ: 'America/Los_Angeles'
   PORT: "20211" 
+  LOG_LEVEL: "debug"
 
