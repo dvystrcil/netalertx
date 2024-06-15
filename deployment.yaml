@@ -16,7 +16,7 @@ spec:
       port: 443
       protocol: TCP
       targetPort: http
-      appProtocol: http
+      appProtocol: tcp
   selector:
     app.kubernetes.io/name: netalertx
   type: ClusterIP
