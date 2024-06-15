@@ -61,11 +61,11 @@ spec:
       labels:
         app.kubernetes.io/name: netalertx
     spec:
-      tolerations:
-      - key: kubernetes.io/arch
-        operator: Equal
-        value: arm64
-        effect: NoSchedule
+      # tolerations:
+      # - key: kubernetes.io/arch
+      #   operator: Equal
+      #   value: arm64
+      #   effect: NoSchedule
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
