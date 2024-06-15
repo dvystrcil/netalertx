@@ -104,7 +104,7 @@ spec:
           securityContext:
             # runAsUser: 101
             # runAsGroup: 82
-            fsGroup: 82
+            # fsGroup: 82
             allowPrivilegeEscalation: false
           #   capabilities:
           #     drop:
@@ -115,7 +115,8 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      # securityContext:
+      securityContext:
+        fsGroup: 82
       #   runAsNonRoot: true
       #   runAsUser: 999
       #   seccompProfile:
