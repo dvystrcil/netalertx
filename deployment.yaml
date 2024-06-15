@@ -13,9 +13,10 @@ metadata:
 spec:
   ports:
     - name: https
-      port: 80
+      port: 443
       protocol: TCP
       targetPort: http
+      appProtocol: http
   selector:
     app.kubernetes.io/name: netalertx
   type: LoadBalancer # ClusterIP
