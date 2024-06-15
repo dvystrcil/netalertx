@@ -14,7 +14,6 @@ spec:
   ports:
     - name: https
       port: 443
-      protocol: TCP
       targetPort: http
       appProtocol: tcp
   selector:
@@ -91,7 +90,6 @@ spec:
           ports:
             - name: http
               containerPort: 20211 
-              protocol: TCP
           resources: {}
           volumeMounts:
             - name: netalertx-claim
