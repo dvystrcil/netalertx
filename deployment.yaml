@@ -13,7 +13,7 @@ metadata:
 spec:
   ports:
     - port: 443
-      targetPort: http
+      targetPort: 20211
   selector:
     app.kubernetes.io/name: netalertx
   type: ClusterIP
