@@ -13,7 +13,7 @@ metadata:
 spec:
   ports:
     - port: 443
-      targetPort: 20211
+      targetPort: http
   selector:
     app.kubernetes.io/name: netalertx
   type: LoadBalancer # ClusterIP
@@ -43,11 +43,7 @@ metadata:
   namespace: netalertx
 spec:
   replicas: 1
-  revisionHistoryLimit: 2
-  # dnsPolicy: None
-  # dnsConfig:
-  #   nameservers:
-  #     - 1.1.1.1
+  revisionHistoryLimit: 2  
   selector:
     matchLabels:
       app.kubernetes.io/name: netalertx
@@ -61,11 +57,12 @@ spec:
       labels:
         app.kubernetes.io/name: netalertx
     spec:
-      # tolerations:
-      # - key: kubernetes.io/arch
-      #   operator: Equal
-      #   value: arm64
-      #   effect: NoSchedule
+      dnsPolicy: Default
+      tolerations:
+      - key: kubernetes.io/arch
+        operator: Equal
+        value: arm64
+        effect: NoSchedule
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
