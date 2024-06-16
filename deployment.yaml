@@ -57,12 +57,8 @@ spec:
       labels:
         app.kubernetes.io/name: netalertx
     spec:
-      dnsPolicy: None
-      dnsConfig:
-        nameservers:
-          - 192.168.86.1
-        searches:
-          - lan
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       tolerations:
       - key: kubernetes.io/arch
         operator: Equal
