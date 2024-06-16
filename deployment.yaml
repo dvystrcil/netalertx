@@ -44,10 +44,10 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 2
-  # dnsPolicy: None
-  # dnsConfig:
-  #   nameservers:
-  #     - 1.1.1.1
+  dnsPolicy: None
+  dnsConfig:
+    nameservers:
+      - 192.168.1.1
   selector:
     matchLabels:
       app.kubernetes.io/name: netalertx
@@ -61,11 +61,11 @@ spec:
       labels:
         app.kubernetes.io/name: netalertx
     spec:
-      # tolerations:
-      # - key: kubernetes.io/arch
-      #   operator: Equal
-      #   value: arm64
-      #   effect: NoSchedule
+      tolerations:
+      - key: kubernetes.io/arch
+        operator: Equal
+        value: arm64
+        effect: NoSchedule
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
