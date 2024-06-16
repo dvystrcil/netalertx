@@ -16,7 +16,7 @@ spec:
       targetPort: 20211
   selector:
     app.kubernetes.io/name: netalertx
-  type: ClusterIP
+  type: LoadBalancer # ClusterIP
 ---
 apiVersion: v1
 kind: ServiceAccount
