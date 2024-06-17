@@ -117,7 +117,7 @@ spec:
       schedulerName: default-scheduler
       securityContext:
         fsGroup: 82
-      #   runAsNonRoot: true
+        runAsNonRoot: true
         runAsUser: 101
       #   seccompProfile:
       #     type: RuntimeDefault
