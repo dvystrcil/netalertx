@@ -12,7 +12,7 @@ metadata:
   namespace: netalertx
 spec:
   ports:
-    - port: 443
+    - port: 80
       targetPort: http
   selector:
     app.kubernetes.io/name: netalertx
