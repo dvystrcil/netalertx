@@ -57,7 +57,8 @@ spec:
       labels:
         app.kubernetes.io/name: netalertx
     spec:
-      dnsPolicy: Default
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       tolerations:
       - key: kubernetes.io/arch
         operator: Equal
