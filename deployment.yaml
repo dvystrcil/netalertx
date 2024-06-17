@@ -117,8 +117,8 @@ spec:
       schedulerName: default-scheduler
       securityContext:
         fsGroup: 82
-        runAsNonRoot: true
-        runAsUser: 101
+        # runAsNonRoot: true
+        # runAsUser: 101
       #   seccompProfile:
       #     type: RuntimeDefault
       serviceAccount: netalertx
@@ -127,8 +127,8 @@ spec:
         - name: netalertx-claim
           persistentVolumeClaim:
             claimName: netalertx-claim
-        - name: run
-          emptyDir: {} 
+        # - name: run
+        #   emptyDir: {} 
         # - name: run-service
         #   emptyDir: {} 
         - name: tmp
