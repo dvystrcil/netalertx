@@ -116,7 +116,7 @@ spec:
       securityContext:
         fsGroup: 82
       #   runAsNonRoot: true
-      #   runAsUser: 999
+        runAsUser: 101
       #   seccompProfile:
       #     type: RuntimeDefault
       serviceAccount: netalertx
