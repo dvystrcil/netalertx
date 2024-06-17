@@ -94,8 +94,8 @@ spec:
               mountPath: /app/db
             - name: netalertx-claim
               mountPath: /app/front/log
-            - name: run
-              mountPath: /run
+            # - name: run
+            #   mountPath: /run
             - name: tmp
               mountPath: /tmp
           envFrom:
