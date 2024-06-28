@@ -12,8 +12,11 @@ metadata:
   namespace: netalertx
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: http
+      protocol: TCP
+      appProtocol: tcp
   selector:
     app.kubernetes.io/name: netalertx
   type: LoadBalancer # ClusterIP
